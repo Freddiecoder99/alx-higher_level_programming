@@ -1,3 +1,8 @@
 #!/bin/bash
-python3 -m compileall $PYFILE -b
-Give feedback
+if [[ -z "$PYFILE" ]]; then
+    echo "Please set the PYFILE environment variable"
+    exit 1
+fi
+echo "Compiling $PYFILE ..."
+python3 -m compileall -b $PYFILE
+mv "${PYFILE}c" "$PYFILEc"
